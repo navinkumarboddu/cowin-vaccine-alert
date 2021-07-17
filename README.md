@@ -1,6 +1,6 @@
 # cowin-vaccine-alert
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework, Angular and BootStrap technologies
+This project uses Quarkus, the Supersonic Subatomic Java Framework, Liquibase, H2 DB, Angular and BootStrap technologies
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 Installation steps for Quarkus can be learned from Google or follow this link -- https://javabydeveloper.com/install-graalvm-on-windows-10-linux-mac/
