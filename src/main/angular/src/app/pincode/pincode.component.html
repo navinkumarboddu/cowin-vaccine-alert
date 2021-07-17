@@ -1,0 +1,18 @@
+<h2>Add Pincode</h2>
+<div class="container">
+    <div class="alert alert-warning" *ngIf="pincodeForm.dirty && pincodeForm.invalid">Enter valid description</div>
+    <form (ngSubmit)="!pincodeForm.invalid && savePincode()" #pincodeForm="ngForm" >
+        <fieldset class="form-group">
+            <label>Pincode</label>
+            <input type="text" name="pincode" #pincode="ngModel" [(ngModel)]="pincodeData.pincode" 
+            required="required" class="form-control" [pattern]="regexNumberPattern"
+            maxlength="6"/>
+        </fieldset>
+        <br/>
+        <button class="btn btn-success" type="submit">Save</button>
+    </form>
+</div>
+<!-- 
+
+
+-->

@@ -1,0 +1,25 @@
+<h1>Pincodes</h1>
+
+<div class="alert alert-warning" *ngIf='pincodeMessage'> {{pincodeMessage}} </div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>DESCRIPTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of pincodes">
+                <td>{{ todo.id }}</td>
+                <td>{{ todo.pincode }}</td>
+                <td><button  class="btn btn-warning">Delete</button></td>
+                <!-- (click)="deletedTodo(todo.id)"-->
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <td><button (click)="addPincode()" class="btn btn-success">Add</button></td>
+    </div>
+</div>

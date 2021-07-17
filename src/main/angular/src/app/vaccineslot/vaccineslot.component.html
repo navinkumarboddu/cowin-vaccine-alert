@@ -1,0 +1,66 @@
+	<h1>Covid Vaccine By Pin</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>Vaccine</th>
+			<th>Available Capacity</th>
+			<th>PinCode</th>
+			<th>Date</th>
+			<th>Name</th>
+			<th>Min Age Limit</th>
+			<th>Block Name</th>
+		</tr>
+		<tbody>
+			<tr *ngFor="let temp of sessions">
+				<td>{{temp.vaccine}}</td>
+				<td>{{temp.available_capacity}}</td>
+				<td>{{temp.pincode}}</td>
+				<td>{{temp.date}}</td>
+				<td>{{temp.name}}</td>
+				<td>{{temp.min_age_limit}}</td>
+				<td>{{temp.block_name}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<br />
+	<br />
+	<!-- <h1>Covid Vaccine By Calendar Pin</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>Vaccine</th>
+			<th>Available Capacity</th>
+			<th>PinCode</th>
+			<th>Date</th>
+			<th>Name</th>
+			<th>Min Age Limit</th>
+			<th>Block Name</th>
+		</tr>
+		<tbody>
+			<tr *ngFor="let temp of sessions">
+				<td>{{temp.vaccine}}</td>
+				<td>{{temp.available_capacity}}</td>
+				<td>{{temp.pincode}}</td>
+				<td>{{temp.date}}</td>
+				<td>{{temp.name}}</td>
+				<td>{{temp.min_age_limit}}</td>
+				<td>{{temp.block_name}}</td>
+			</tr>
+		</tbody>
+	</table> -->
+	<br/>
+	<button #alertButton class="btn btn-lg btn-outline-primary" (click)="open(mymodal)" hidden>Open My Modal</button>
+   
+	<ng-template #mymodal let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Vaccine Alert</h4>
+		<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+		<span aria-hidden="true">×</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		Vaccines have become available
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+	</div>
+	</ng-template>

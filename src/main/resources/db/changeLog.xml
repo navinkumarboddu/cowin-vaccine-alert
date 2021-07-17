@@ -1,0 +1,53 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+	<changeSet author="quarkus" id="1">
+		<createTable tableName="cowinpincodes">
+			<column name="ID" type="int" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+
+			<column name="PINCODE" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+
+	<changeSet id="List of pincodes" author="pincode presents">
+		<!--<insert tableName="cowinpincodes">
+			<column name="PINCODE" value="413001" />
+		</insert>
+		<insert tableName="cowinpincodes">
+			<column name="PINCODE" value="413003" />
+		</insert>
+		<insert tableName="cowinpincodes">
+			<column name="PINCODE" value="413004" />
+		</insert>
+		<insert tableName="cowinpincodes">
+			<column name="PINCODE" value="413006" />
+		</insert>
+		<insert tableName="cowinpincodes">
+			<column name="PINCODE" value="413007" />
+		</insert>
+		<insert tableName="cowinpincodes">
+			<column name="PINCODE" value="413008" />
+		</insert>
+		<insert tableName="cowinpincodes">
+			<column name="PINCODE" value="413409" />
+		</insert>
+		<insert tableName="cowinpincodes">
+			<column name="PINCODE" value="413224" />
+		</insert>
+		<insert tableName="cowinpincodes">
+			<column name="PINCODE" value="413226" />
+		</insert>-->
+		<insert tableName="cowinpincodes">
+			<column name="PINCODE" value="411014"/>
+		</insert>
+	</changeSet>
+</databaseChangeLog>
