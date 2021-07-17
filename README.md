@@ -25,9 +25,14 @@ Currently, following api's are integrated:
 
 ## Running the angular application
 > Goto to src/main/angular
+
 > Run npm install
+
 > Run npm install bootstrap --save
+
 > Run npm install --save @ng-bootstrap/ng-bootstrap
+
 > Run ng serve
+
 angular app will launch at http://localhost:4200
 
