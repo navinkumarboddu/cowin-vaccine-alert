@@ -16,12 +16,15 @@ You can run your application in dev mode that enables live coding using:
 
 Currently, following api's are integrated:
 ## Integrated with Frontend
-/cowin/findByPin ---> to find vaccine slots by pincodes and next date from current date 
+/cowin/findByPin ---> to find vaccine slots by pincodes and next date from current date
+
 /cowin/pincodes ---> to get list of pincodes to list on pincodes page from H2 DB
+
 /cowin/pincodes ---> to store preferred pincodes to store in H2 DB
 
 ## To Be Integrated with Frontend
 /cowin/calendarByPin ---> to find vaccine slots planned sessions for next 7 days from current date in a given pincodes
+
 
 ## Running the angular application
 > Goto to src/main/angular
