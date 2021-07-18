@@ -21,7 +21,7 @@ export class PincodeComponent implements OnInit {
   }
 
   savePincode(){
-    console.log(`Hi Pincode : ${this.pincodeData}`);
+    //console.log(`Hi Pincode : ${this.pincodeData}`);
     this.pincodeService.createPincode(this.pincodeData).subscribe(
       response =>{
         console.log(response);

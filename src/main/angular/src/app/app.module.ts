@@ -8,8 +8,12 @@ import { VaccineslotComponent } from './vaccineslot/vaccineslot.component';
 import { MenuComponent } from './menu/menu.component';
 import { ListPincodesComponent } from './list-pincodes/list-pincodes.component';
 import { PincodeComponent } from './pincode/pincode.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PreferencesComponent } from './preferences/preferences.component';
+import { CommonModule } from '@angular/common';
+import { MultiselectComponent } from './multiselect/multiselect.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -17,14 +21,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     VaccineslotComponent,
     MenuComponent,
     ListPincodesComponent,
-    PincodeComponent
+    PincodeComponent,
+    PreferencesComponent,
+    MultiselectComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    CommonModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

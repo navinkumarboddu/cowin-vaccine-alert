@@ -50,4 +50,34 @@
 			<column name="PINCODE" value="411014"/>
 		</insert>
 	</changeSet>
+	
+	<changeSet author="quarkus1" id="3">
+		<createTable tableName="age">
+			<column name="ID" type="int" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="AGE" type="int" />
+			<column name="STATUS" type="boolean"/>
+		</createTable>
+		<insert tableName="age">
+			<column name="AGE" value="18"/>
+			<column name="STATUS" value="true"/>
+		</insert>
+		
+		<createTable tableName="vaccines">
+			<column name="ID" type="int" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="VACCINENAME" type="VARCHAR(255)" />
+			<column name="STATUS" type="boolean"/>
+		</createTable>
+		<insert tableName="vaccines">
+			<column name="VACCINENAME" value="Covishield"/>
+			<column name="STATUS" value="true"/>
+		</insert>
+		<insert tableName="vaccines">
+			<column name="VACCINENAME" value="Covaxin"/>
+			<column name="STATUS" value="true"/>
+		</insert>
+	</changeSet>
 </databaseChangeLog>

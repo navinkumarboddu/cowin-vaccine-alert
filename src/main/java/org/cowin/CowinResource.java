@@ -21,6 +21,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.cowin.data.Age;
 import org.cowin.data.CowinPincodes;
 import org.cowin.data.FindByPinData;
 import org.cowin.data.SelCalendarByPin;
@@ -29,6 +30,7 @@ import org.cowin.data.SelFindByPinData;
 import org.cowin.data.SelRoot;
 import org.cowin.data.SelSessions;
 import org.cowin.data.Session;
+import org.cowin.data.Vaccine;
 import org.cowin.repository.CowinPincodeRepository;
 import org.cowin.service.CowinDataConverter;
 import org.cowin.service.CowinPinCodesService;
@@ -140,5 +142,44 @@ public class CowinResource {
 		CowinPincodes.persist(cowinPincodes);
 		return Response.accepted().build();
 	}
+	
+	@GET
+	@Path("/ages")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Age> getAges() {
+		List<Age> result = new ArrayList<Age>();
+		try (Stream<Age> ages = Age.streamAll();) {
+			result = ages.collect(Collectors.toList());
+		}
+		return result;
+	}
+	
+	@POST
+	@Path("/ages")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Transactional
+	public Response addAge(Age age) {
+		Age.persist(age);
+		return Response.accepted().build();
+	}
+	
+	@GET
+	@Path("/vaccines")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Vaccine> getVaccines() {
+		List<Vaccine> result = new ArrayList<Vaccine>();
+		try (Stream<Vaccine> vaccines = Vaccine.streamAll();) {
+			result = vaccines.collect(Collectors.toList());
+		}
+		return result;
+	}
 
+	@POST
+	@Path("/vaccines")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Transactional
+	public Response addVaccine(Vaccine vaccine) {
+		Vaccine.persist(vaccine);
+		return Response.accepted().build();
+	}
 }

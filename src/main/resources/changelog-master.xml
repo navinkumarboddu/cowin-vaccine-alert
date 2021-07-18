@@ -56,4 +56,25 @@
 			<column name="PINCODE" value="413209" />
 		</insert>-->
 	</changeSet>
+	
+	<changeSet author="quarkus1" id="3">
+		<createTable tableName="age">
+			<column name="ID" type="int" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+
+			<column name="AGE" type="int" />
+		</createTable>
+		<insert tableName="age">
+			<column name="AGE" value="12"/>
+		</insert>
+		
+		<createTable tableName="vaccines">
+			<column name="ID" type="int" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+
+			<column name="VACCINENAME" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
 </databaseChangeLog>

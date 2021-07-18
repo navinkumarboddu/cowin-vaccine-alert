@@ -1,0 +1,52 @@
+<div class="container">
+
+    <div class="py-5 text-center">
+        <h2>Preferences</h2>
+        <p class="lead">You can set age, vaccine and alert preferences.</p>
+    </div>
+
+    <div class="row">
+        
+        <div class="col-md-8 order-md-1">
+          
+            <h4 class="mb-3">Age Criteria</h4>
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <form [formGroup]="myForm" (reset)="resetForm()">
+                    <div class="form-group form-outline mb-4">
+                        <label for="ageCriteria">Age Criteria</label>
+                            <ng-multiselect-dropdown #multiSelect
+                            name="city"
+                            [placeholder]="'Select City'"
+                            [settings]="dropdownSettings"
+                            [data]="dropdownList"
+                            formControlName="city"
+                            [disabled]="disabled"        
+                            (onSelect)="onItemSelect($event)">
+                        </ng-multiselect-dropdown>
+                    </div>                                    
+                    <!--<input type="submit" value="Submit"> | <input type="reset" value="Reset">-->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-name">Add Age</label>
+                            <input type="text" #name placeholder="Add Age" class="form-control">
+                            <div class="invalid-feedback">
+                            Name on card is required
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-4   ">
+                            <button (click)="addNewOption(name.value)" class="btn btn-primary btn-block">Add to SELECT</button>
+                        </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <hr class="mb-4">
+
+          
+            
+        </div>
+      </div>
+</div>  
