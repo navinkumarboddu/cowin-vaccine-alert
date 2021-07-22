@@ -5,6 +5,9 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework, Liquibase, H
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 Installation steps for Quarkus can be learned from Google or follow this link -- https://javabydeveloper.com/install-graalvm-on-windows-10-linux-mac/
 
+## Architecture of the App:
+![alt text](https://github.com/navinkumarboddu/cowin-vaccine-alert/blob/master/Architecture.jpg?raw=true)
+
 ## Running the quarkus application in dev mode
 
 You can run your application in dev mode that enables live coding using:
