@@ -15,12 +15,26 @@ You can run your application in dev mode that enables live coding using:
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/
 
 Currently, following api's are integrated:
-## Integrated with Frontend
+## API Integrated with Frontend
 /cowin/findByPin ---> to find vaccine slots by pincodes and next date from current date
 
 /cowin/pincodes ---> to get list of pincodes to list on pincodes page from H2 DB
 
 /cowin/pincodes ---> to store preferred pincodes to store in H2 DB
+
+/cowin/pincodes/{id} ---> to delete pincodes from the list
+
+/cowin/ages ---> POST to add prefered ages for filter criteria
+
+/cowin/ages ---> GET to get all list prefered ages
+
+/cowin/vaccines ---> POST to add prefered vaccines for filter criteria
+
+/cowin/vaccines ---> GET to get all list prefered vaccines
+
+/cowin/doses ---> GET to get all list prefered doses
+
+/cowin/preferences ---> POST to store prefered filter criteria
 
 ## To Be Integrated with Frontend
 /cowin/calendarByPin ---> to find vaccine slots planned sessions for next 7 days from current date in a given pincodes
