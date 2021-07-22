@@ -52,14 +52,14 @@
 	</changeSet>
 	
 	<changeSet author="quarkus1" id="3">
-		<createTable tableName="age">
+		<createTable tableName="ages">
 			<column name="ID" type="int" autoIncrement="true">
 				<constraints nullable="false" primaryKey="true" />
 			</column>
 			<column name="AGE" type="int" />
 			<column name="STATUS" type="boolean"/>
 		</createTable>
-		<insert tableName="age">
+		<insert tableName="ages">
 			<column name="AGE" value="18"/>
 			<column name="STATUS" value="true"/>
 		</insert>

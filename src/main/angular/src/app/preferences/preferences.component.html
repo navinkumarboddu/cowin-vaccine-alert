@@ -1,79 +1,125 @@
-<div class="container">
+<div class="container" *ngIf="loadContent">
 
-  <div class="py-5 text-center">
-      <h2>Preferences</h2>
-      <p class="lead">You can set age, vaccine and alert preferences. Please Click Save to save your preferences.</p>
-  </div>
+    <div class="py-5 text-center">
+        <h2>Preferences</h2>
+        <p class="lead">You can set age, vaccine and alert preferences. Please Click Save to save your preferences.</p>
+    </div>
 
-  <div class="row">
-    <form [formGroup]="myForm" (reset)="resetForm()" #ageForm="ngForm" (ngSubmit)="!ageForm.invalid">
-      <div class="col-md-8 order-md-1">
-        
-          <div class="row">
-            <div class="col-md-12 mb-3">
-              <h4 class="mb-3">Age Criteria</h4>
-              
-                  <div class="form-group form-outline mb-4">
-                          <ng-multiselect-dropdown #multiSelect
-                          [placeholder]="'Either Select or Enter Age'"
-                          [settings]="dropdownSettings"
-                          [data]="dropdownList"
-                          formControlName="age"
-                          [disabled]="disabled"        
-                          (onSelect)="onItemSelect($event)">
-                      </ng-multiselect-dropdown>
-                  </div>                                    
-                  <!--<input type="submit" value="Submit"> | <input type="reset" value="Reset">-->
-                  <div class="row">
-                      <div class="col-md-6 mb-3">
-                          <label for="cc-name">Option to New Add Age Criteria</label>
-                          <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')" 
-                            #age placeholder="Add Age" class="form-control" 
-                            required="required" [pattern]="regexNumberPattern">
-                          <small class="text-muted">Please add new age criteria and choose in select box above</small>
-                          <div class="invalid-feedback" *ngIf="ageForm.dirty && ageForm.invalid">
-                            Enter valid age
-                          </div>
-                          <div class="alert alert-warning" *ngIf="ageForm.dirty && ageForm.invalid">Enter valid age</div>
+    <form role="form" #MySelectForm="ngForm">
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                        <!--<div class="form-group">
+                            <h4 class="mb-3">Age Criteria</h4>
+                            <fieldset class="form-group"> 
+                                <ng-select 
+                                [items]="categories"
+                                bindLabel="name"
+                                placeholder="Select Category"
+                                appendTo="body"
+                                [multiple]="true"
+                                [(ngModel)]="selected"
+                                name="licenseAuthorityId"  
+                                required 
+                                [disabled]="isFormDisabled"
+                                [hideSelected]="true"
+                                [addTag]="addCustomUser">
+                                </ng-select>
+                            </fieldset>
+                        </div>
+                        <hr class="mb-4">-->
+                        <div class="form-group">
+                            <h4 class="mb-3">Age Criteria</h4>
+                            <fieldset class="form-group"> 
+                                <ng-select 
+                                [items]="dropDownAges"
+                                bindLabel="age"
+                                placeholder="Select Age"
+                                appendTo="body"
+                                [multiple]="true"
+                                [(ngModel)]="selectedAges"
+                                name="ages"  
+                                required 
+                                [disabled]="isFormDisabled"
+                                [hideSelected]="true"
+                                [addTag]="addAgeOption">
+                                </ng-select>
+                            </fieldset>
+                        </div>
+                        <hr class="mb-4">
+                        <div class="form-group">
+                            <h4 class="mb-3">Vaccine Criteria</h4>
+                            <fieldset class="form-group"> 
+                                <ng-select 
+                                [items]="dropDownVaccines"
+                                bindLabel="vaccinename"
+                                placeholder="Select Vaccine"
+                                appendTo="body"
+                                [multiple]="true"
+                                [(ngModel)]="selectedVaccines"
+                                name="vaccines"  
+                                required 
+                                [disabled]="isFormDisabled"
+                                [hideSelected]="true"
+                                [addTag]="addVaccineOption">
+                                </ng-select>
+                            </fieldset>
+                        </div>
+                        <hr class="mb-4">
+                        <div class="form-group">
+                          <h4 class="mb-3">Dose Criteria</h4>
+                          <fieldset class="form-group"> 
+                              <ng-select 
+                              [items]="dropDownDoses"
+                              bindLabel="dose"
+                              placeholder="Select Dose"
+                              appendTo="body"
+                              [multiple]="true"
+                              [(ngModel)]="selectedDoses"
+                              name="doses"  
+                              required 
+                              [disabled]="isFormDisabled"
+                              [hideSelected]="true">
+                              </ng-select>
+                          </fieldset>
                       </div>
-                      <div class="col-md-6 mt-4   ">
-                          <button (click)="addAgeOption(age)" class="btn btn-primary btn-block">Add to SELECT</button>
-                      </div>
-                  </div>
-              
+                </div>
             </div>
-            <hr class="mb-4">
-            <div class="col-md-12 mb-3">
-                <h4 class="mb-3">Vaccine Criteria</h4>
-                    <div class="form-group form-outline mb-4">
-                        <ng-multiselect-dropdown #multiSelect
-                            [placeholder]="'Either Select or Enter Age'"
-                            [settings]="dropdownVaccineSettings"
-                            [data]="dropdownVaccineList"
-                            [disabled]="disabled"        
-                            (onSelect)="onItemSelect($event)"
-                            formControlName="vaccinename">
-                        </ng-multiselect-dropdown>
-                    </div>                                    
-                    <!--<input type="submit" value="Submit"> | <input type="reset" value="Reset">-->
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="cc-name">Option to New Add Vaccine Criteria</label>
-                            <input type="text" #name placeholder="Add Vaccine" class="form-control">
-                            <small class="text-muted">Please add new vaccine criteria and choose in select box above</small>
-                            <div class="invalid-feedback">
-                            Name on card is required
-                            </div>
-                        </div>
-                        <div class="col-md-6 mt-4   ">
-                            <button (click)="addVaccineOption(name.value)" class="btn btn-primary btn-block">Add to SELECT</button>
-                        </div>
-                    </div>
+        </div>
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted">Your Preferences</span>
+              <span class="badge badge-secondary badge-pill">3</span>
+            </h4>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Age</h6>
+                  <small class="text-muted" *ngFor="let select of selectedAges; let isLast=last"> {{select.age}}{{isLast ? '' : ', '}} </small>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Vaccine</h6>
+                  <small class="text-muted" *ngFor="let select of selectedVaccines; let isLast=last"> {{select.vaccinename}}{{isLast ? '' : ', '}} </small>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Dose</h6>
+                  <small class="text-muted" *ngFor="let select of selectedDoses; let isLast=last"> {{select.dose}}{{isLast ? '' : ', '}} </small>
+                </div>
+              </li>
+            </ul>
+              <div class="input-group">
+                <div class="input-group-append">
+                  <fieldset class="form-group">
+                    <button class="btn btn-primary" (click)="savePref()" [disabled]="MySelectForm.invalid">Save</button>
+                  </fieldset>
+                </div>
               </div>
-              <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
-          </div>                   
-      </div>
-    </form>
-    </div>   
-</div>  
+          </div>
+    </div>
+  </form>
+</div>

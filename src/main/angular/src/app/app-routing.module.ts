@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListPincodesComponent } from './list-pincodes/list-pincodes.component';
-import { MultiselectComponent } from './multiselect/multiselect.component';
 import { PincodeComponent } from './pincode/pincode.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { VaccineslotComponent } from './vaccineslot/vaccineslot.component';

@@ -7,7 +7,7 @@ import { Pincode } from '../common/pincode';
   providedIn: 'root'
 })
 export class PincodeService {
- 
+  
   private baseUrl = 'http://localhost:8080/cowin';
 
   constructor(private httpClient: HttpClient) { }
@@ -18,6 +18,10 @@ export class PincodeService {
 
   createPincode(pincodeData: Pincode) {
     return this.httpClient.post<Pincode[]>(`${this.baseUrl}/pincodes`,pincodeData);
+  }
+
+  deletePincode(id: number){
+    return this.httpClient.delete<Pincode[]>(`${this.baseUrl}/pincodes/${id}`);
   }
   
 }

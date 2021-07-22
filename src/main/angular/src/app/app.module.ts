@@ -12,8 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { CommonModule } from '@angular/common';
-import { MultiselectComponent } from './multiselect/multiselect.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MenuComponent,
     ListPincodesComponent,
     PincodeComponent,
-    PreferencesComponent,
-    MultiselectComponent
+    PreferencesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +31,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     NgbModule,
     ReactiveFormsModule,
     CommonModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

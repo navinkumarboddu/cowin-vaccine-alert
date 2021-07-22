@@ -11,11 +11,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let todo of pincodes">
-                <td>{{ todo.id }}</td>
-                <td>{{ todo.pincode }}</td>
-                <td><button  class="btn btn-warning">Delete</button></td>
-                <!-- (click)="deletedTodo(todo.id)"-->
+            <tr *ngFor="let temp of pincodes">
+                <td>{{ temp.id }}</td>
+                <td>{{ temp.pincode }}</td>
+                <td><button  class="btn btn-warning" (click)="deletePincode(temp.id)">Delete</button></td>
             </tr>
         </tbody>
     </table>

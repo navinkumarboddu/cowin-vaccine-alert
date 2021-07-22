@@ -38,4 +38,15 @@ export class ListPincodesComponent implements OnInit {
     this.router.navigate(['pincode']);
   }
 
+  deletePincode(id: string){
+    console.log(`deletedTodo : ${id}`);
+    this.pincodeService.deletePincode(Number(id)).subscribe(
+      response => {
+        console.log(response);
+        this.pincodeMessage = `Delete Success of ${id} Successful !`;
+        this.refreshPincodes();
+      }
+    );
+  }
+
 }

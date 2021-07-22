@@ -1,6 +1,5 @@
 package org.cowin.data;
 
-import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +8,7 @@ import javax.persistence.Id;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-@Entity(name = "dose")
+@Entity(name = "doses")
 public class Dose extends PanacheEntityBase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +25,6 @@ public class Dose extends PanacheEntityBase {
 		return id;
 	}
 
-	@JsonbTransient
 	public void setId(Long id) {
 		this.id = id;
 	}

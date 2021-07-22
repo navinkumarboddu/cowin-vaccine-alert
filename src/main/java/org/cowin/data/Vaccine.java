@@ -1,6 +1,5 @@
 package org.cowin.data;
 
-import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,6 @@ public class Vaccine extends PanacheEntityBase {
 		return id;
 	}
 
-	@JsonbTransient
 	public void setId(Long id) {
 		this.id = id;
 	}
