@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,6 +24,7 @@ import javax.ws.rs.core.Response;
 
 import org.cowin.data.Age;
 import org.cowin.data.CowinPincodes;
+import org.cowin.data.Dose;
 import org.cowin.data.FindByPinData;
 import org.cowin.data.SelCalendarByPin;
 import org.cowin.data.SelCenters;
@@ -31,6 +33,7 @@ import org.cowin.data.SelRoot;
 import org.cowin.data.SelSessions;
 import org.cowin.data.Session;
 import org.cowin.data.Vaccine;
+import org.cowin.predicate.SessionPredicates;
 import org.cowin.repository.CowinPincodeRepository;
 import org.cowin.service.CowinDataConverter;
 import org.cowin.service.CowinPinCodesService;
@@ -72,17 +75,23 @@ public class CowinResource {
 				slots.addAll(Arrays.asList(rootData.getSessions()));
 			}
 		});
-		List<SelSessions> finalSlots = slots.stream().filter(e -> e.getVaccine().equalsIgnoreCase("covishield"))
+
+		List<SelSessions> finalSlots1 = filterEmployees(slots, SessionPredicates.ageCriteria(getAges()));
+		finalSlots1 = filterEmployees(finalSlots1, SessionPredicates.vaccineCriteria(getVaccines()));
+		
+		System.out.println(finalSlots1);
+		
+		/*List<SelSessions> finalSlots = slots.stream().filter(e -> e.getVaccine().equalsIgnoreCase("covishield"))
 				.filter(e -> Integer.parseInt(e.getMin_age_limit()) < 45)
-				.filter(e -> Integer.parseInt(e.getAvailable_capacity_dose1()) > 10).collect(Collectors.toList());
+				.filter(e -> e.getAvailable_capacity_dose1() > 10).collect(Collectors.toList());*/
 		// return new SelFindByPinData(finalSlots);
 
 		// Create Jsonb and serialize
-		Jsonb jsonb = JsonbBuilder.create();
-		String result = jsonb.toJson(new SelFindByPinData(finalSlots));
-		System.out.println("Navin : " + result);
+		/*Jsonb jsonb = JsonbBuilder.create();
+		String result = jsonb.toJson(new SelFindByPinData(finalSlots));*/
+		//System.out.println("Navin : " + result);
 
-		return finalSlots;
+		return finalSlots1;
 	}
 
 	@GET
@@ -142,7 +151,7 @@ public class CowinResource {
 		CowinPincodes.persist(cowinPincodes);
 		return Response.accepted().build();
 	}
-	
+
 	@GET
 	@Path("/ages")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -153,7 +162,7 @@ public class CowinResource {
 		}
 		return result;
 	}
-	
+
 	@POST
 	@Path("/ages")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -162,7 +171,7 @@ public class CowinResource {
 		Age.persist(age);
 		return Response.accepted().build();
 	}
-	
+
 	@GET
 	@Path("/vaccines")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -181,5 +190,21 @@ public class CowinResource {
 	public Response addVaccine(Vaccine vaccine) {
 		Vaccine.persist(vaccine);
 		return Response.accepted().build();
+	}
+	
+	@GET
+	@Path("/doses")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Dose> getDoses() {
+		List<Dose> result = new ArrayList<Dose>();
+		try (Stream<Dose> doses = Dose.streamAll();) {
+			result = doses.collect(Collectors.toList());
+		}
+		return result;
+	}
+	
+
+	public static List<SelSessions> filterEmployees(List<SelSessions> slots, Predicate<SelSessions> predicate) {
+		return slots.stream().filter(predicate).collect(Collectors.<SelSessions>toList());
 	}
 }

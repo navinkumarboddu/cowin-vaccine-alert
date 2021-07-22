@@ -42,11 +42,11 @@ public class SelSessions {
 
 	private String to;
 
-	private String available_capacity_dose2;
+	private Long available_capacity_dose2;
 
 	private String lat;
 
-	private String available_capacity_dose1;
+	private Long available_capacity_dose1;
 
 	public boolean isAllow_all_age() {
 		return allow_all_age;
@@ -210,14 +210,6 @@ public class SelSessions {
 		this.to = to;
 	}
 
-	public String getAvailable_capacity_dose2() {
-		return available_capacity_dose2;
-	}
-
-	public void setAvailable_capacity_dose2(String available_capacity_dose2) {
-		this.available_capacity_dose2 = available_capacity_dose2;
-	}
-
 	public String getLat() {
 		return lat;
 	}
@@ -226,11 +218,19 @@ public class SelSessions {
 		this.lat = lat;
 	}
 
-	public String getAvailable_capacity_dose1() {
+	public Long getAvailable_capacity_dose2() {
+		return available_capacity_dose2;
+	}
+
+	public void setAvailable_capacity_dose2(Long available_capacity_dose2) {
+		this.available_capacity_dose2 = available_capacity_dose2;
+	}
+
+	public Long getAvailable_capacity_dose1() {
 		return available_capacity_dose1;
 	}
 
-	public void setAvailable_capacity_dose1(String available_capacity_dose1) {
+	public void setAvailable_capacity_dose1(Long available_capacity_dose1) {
 		this.available_capacity_dose1 = available_capacity_dose1;
 	}
 

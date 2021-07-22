@@ -79,5 +79,21 @@
 			<column name="VACCINENAME" value="Covaxin"/>
 			<column name="STATUS" value="true"/>
 		</insert>
+		
+		<createTable tableName="doses">
+			<column name="ID" type="int" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="DOSE" type="VARCHAR(255)" />
+			<column name="STATUS" type="boolean"/>
+		</createTable>
+		<insert tableName="doses">
+			<column name="DOSE" value="dose1"/>
+			<column name="STATUS" value="true"/>
+		</insert>
+		<insert tableName="doses">
+			<column name="DOSE" value="dose2"/>
+			<column name="STATUS" value="false"/>
+		</insert>
 	</changeSet>
 </databaseChangeLog>

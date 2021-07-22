@@ -17,7 +17,7 @@ export class AgeService {
     //console.log("Hello World");
   }
 
-  createPincode(ageData: Age) {
+  createAge(ageData: Age) {
     return this.httpClient.post<Age[]>(`${this.baseUrl}/ages`,ageData);
   }
 }

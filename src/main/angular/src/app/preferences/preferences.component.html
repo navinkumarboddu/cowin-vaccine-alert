@@ -6,80 +6,74 @@
   </div>
 
   <div class="row">
-      
+    <form [formGroup]="myForm" (reset)="resetForm()" #ageForm="ngForm" (ngSubmit)="!ageForm.invalid">
       <div class="col-md-8 order-md-1">
         
           <div class="row">
             <div class="col-md-12 mb-3">
               <h4 class="mb-3">Age Criteria</h4>
-              <form [formGroup]="myForm" (reset)="resetForm()" #ageForm="ngForm" (ngSubmit)="!ageForm.invalid">
+              
                   <div class="form-group form-outline mb-4">
-                      <label for="ageCriteria">Age Criteria</label>
                           <ng-multiselect-dropdown #multiSelect
-                          name="city"
                           [placeholder]="'Either Select or Enter Age'"
                           [settings]="dropdownSettings"
                           [data]="dropdownList"
                           formControlName="age"
                           [disabled]="disabled"        
-                          (onSelect)="onItemSelect($event)"
-                          >
+                          (onSelect)="onItemSelect($event)">
                       </ng-multiselect-dropdown>
                   </div>                                    
                   <!--<input type="submit" value="Submit"> | <input type="reset" value="Reset">-->
                   <div class="row">
                       <div class="col-md-6 mb-3">
                           <label for="cc-name">Option to New Add Age Criteria</label>
-                          <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')" #age placeholder="Add Age" class="form-control" 
-                          [(ngModel)]="ageData.age" 
-                          required="required" [pattern]="regexNumberPattern">
-                          <small class="text-muted">Please add age criteria and choose in select box above</small>
+                          <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')" 
+                            #age placeholder="Add Age" class="form-control" 
+                            required="required" [pattern]="regexNumberPattern">
+                          <small class="text-muted">Please add new age criteria and choose in select box above</small>
                           <div class="invalid-feedback" *ngIf="ageForm.dirty && ageForm.invalid">
                             Enter valid age
                           </div>
                           <div class="alert alert-warning" *ngIf="ageForm.dirty && ageForm.invalid">Enter valid age</div>
                       </div>
                       <div class="col-md-6 mt-4   ">
-                          <button (click)="addNewOption(age.value)" class="btn btn-primary btn-block">Add to SELECT</button>
+                          <button (click)="addAgeOption(age)" class="btn btn-primary btn-block">Add to SELECT</button>
                       </div>
                   </div>
-              </form>
+              
             </div>
             <hr class="mb-4">
             <div class="col-md-12 mb-3">
                 <h4 class="mb-3">Vaccine Criteria</h4>
-                <form [formGroup]="myForm" (reset)="resetForm()">
                     <div class="form-group form-outline mb-4">
-                        <label for="ageCriteria">Age Criteria</label>
-                            <ng-multiselect-dropdown #multiSelect
-                            name="city"
+                        <ng-multiselect-dropdown #multiSelect
                             [placeholder]="'Either Select or Enter Age'"
-                            [settings]="dropdownSettings"
-                            [data]="dropdownList"
-                            formControlName="age"
+                            [settings]="dropdownVaccineSettings"
+                            [data]="dropdownVaccineList"
                             [disabled]="disabled"        
-                            (onSelect)="onItemSelect($event)">
+                            (onSelect)="onItemSelect($event)"
+                            formControlName="vaccinename">
                         </ng-multiselect-dropdown>
                     </div>                                    
                     <!--<input type="submit" value="Submit"> | <input type="reset" value="Reset">-->
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="cc-name">Option to New Add Age Criteria</label>
-                            <input type="text" #name placeholder="Add Age" class="form-control">
-                            <small class="text-muted">Please add age criteria and choose in select box above</small>
+                            <label for="cc-name">Option to New Add Vaccine Criteria</label>
+                            <input type="text" #name placeholder="Add Vaccine" class="form-control">
+                            <small class="text-muted">Please add new vaccine criteria and choose in select box above</small>
                             <div class="invalid-feedback">
                             Name on card is required
                             </div>
                         </div>
                         <div class="col-md-6 mt-4   ">
-                            <button (click)="addNewOption(name.value)" class="btn btn-primary btn-block">Add to SELECT</button>
+                            <button (click)="addVaccineOption(name.value)" class="btn btn-primary btn-block">Add to SELECT</button>
                         </div>
                     </div>
-                </form>
               </div>
               <hr class="mb-4">
             <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
           </div>                   
       </div>
-    </div>
+    </form>
+    </div>   
 </div>  

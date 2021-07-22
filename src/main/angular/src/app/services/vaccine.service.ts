@@ -8,7 +8,7 @@ import { Vaccine } from '../common/vaccine';
   providedIn: 'root'
 })
 export class VaccineService {
-
+ 
   private baseUrl = 'http://localhost:8080/cowin';
 
   constructor(private httpClient: HttpClient) { }
@@ -21,6 +21,10 @@ export class VaccineService {
   retrieveAllVaccines(): Observable<Vaccine[]> {
     return this.httpClient.get<Vaccine[]>(`${this.baseUrl}/vaccines`);
     //console.log("Hello World");
+  }
+
+  createVaccine(vaccineData: Vaccine) {
+    return this.httpClient.post<Vaccine[]>(`${this.baseUrl}/vaccines`,vaccineData);
   }
 }
 

@@ -9,15 +9,15 @@ import javax.persistence.Id;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-@Entity(name = "vaccines")
-public class Vaccine extends PanacheEntityBase {
+@Entity(name = "dose")
+public class Dose extends PanacheEntityBase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "vaccinename")
-	private String vaccinename;
+	@Column(name = "dose")
+	private String dose;
 
 	@Column(name = "status")
 	private boolean status;
@@ -31,12 +31,12 @@ public class Vaccine extends PanacheEntityBase {
 		this.id = id;
 	}
 
-	public String getVaccinename() {
-		return vaccinename;
+	public String getDose() {
+		return dose;
 	}
 
-	public void setVaccinename(String vaccinename) {
-		this.vaccinename = vaccinename;
+	public void setDose(String dose) {
+		this.dose = dose;
 	}
 
 	public boolean isStatus() {
