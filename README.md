@@ -6,7 +6,7 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 Installation steps for Quarkus can be learned from Google or follow this link -- https://javabydeveloper.com/install-graalvm-on-windows-10-linux-mac/
 
 ## Architecture of the App:
-![alt text](https://github.com/navinkumarboddu/cowin-vaccine-alert/blob/master/Architecture.jpg?raw=true)
+![Architecture](https://github.com/navinkumarboddu/cowin-vaccine-alert/blob/master/Architecture.jpg?raw=true)
 
 ## Running the quarkus application in dev mode
 
@@ -55,4 +55,15 @@ Currently, following api's are integrated:
 > Run ng serve
 
 angular app will launch at http://localhost:4200
+
+## App Screens
+
+1. Alert ![Architecture](https://github.com/navinkumarboddu/cowin-vaccine-alert/blob/master/Vaccine-Alert.jpg?raw=true)
+2. Vaccine Listing ![Architecture](https://github.com/navinkumarboddu/cowin-vaccine-alert/blob/master/Vaccine-Listing.jpg)
+3. Pincode Listing ![Architecture](https://github.com/navinkumarboddu/cowin-vaccine-alert/blob/master/Pincode-Listing.jpg)
+4. Add Pincode ![Architecture](https://github.com/navinkumarboddu/cowin-vaccine-alert/blob/master/Pincode-Add.jpg)
+5. Preferences ![Architecture](https://github.com/navinkumarboddu/cowin-vaccine-alert/blob/master/Preferences.jpg)
+
+
+
 
